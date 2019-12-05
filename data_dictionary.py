@@ -62,4 +62,4 @@ def remove_newline(text):
 
 
 if __name__ == '__main__':
-    generate('db_name')
+    generate('输入要生成的数据库名')
