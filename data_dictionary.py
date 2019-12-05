@@ -30,7 +30,7 @@ def generate(database_name):
 
     tables = cursor.fetchall()
 
-    markdown_table_header = """\n\n### %s (%s) \n| 序号 | 字段名称 | 数据类型 | 是否为空 | 字段说明 |\n| :--: |----| ---- | ---- | ---- |\n"""
+    markdown_table_header = """\n\n\n### %s (%s) \n| 序号 | 字段名称 | 数据类型 | 是否为空 | 字段说明 |\n| :--: |----| ---- | ---- | ---- |\n"""
     markdown_table_row = """| %s | %s | %s | %s | %s |"""
 
     f = open(database_name + '.md', 'w')
