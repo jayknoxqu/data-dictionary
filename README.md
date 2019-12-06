@@ -1,5 +1,6 @@
 ## Generate MySQL Data Dictionary (生成MySQL数据字典)
 
+### 方式一、通过SQL生成数据字典
 ```sql
 USE information_schema;
 SELECT
