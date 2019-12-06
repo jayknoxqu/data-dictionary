@@ -13,19 +13,19 @@ def generate(database_name):
     """
     importlib.reload(sys)
 
+    # 使用前修改配置
     conn = mysql.connector.connect(
         host='127.0.0.1',
         port='3306',
         user='root',
         password='123456',
-        database='information_schema',
         use_pure=True
     )
 
     cursor = conn.cursor()
 
     cursor.execute(
-        "SELECT table_name, table_comment FROM information_schema.tables WHERE table_type='BASE TABLE' AND table_schema='%s'" % database_name
+        "SELECT TABLE_NAME, TABLE_COMMENT FROM information_schema.TABLES WHERE table_type='BASE TABLE' AND TABLE_SCHEMA='%s'" % database_name
     )
 
     tables = cursor.fetchall()
@@ -38,8 +38,8 @@ def generate(database_name):
     for table in tables:
 
         cursor.execute(
-            "SELECT ordinal_position, column_name, column_type, is_nullable, column_comment "
-            "FROM information_schema.columns WHERE table_schema='%s' AND table_name='%s'" % (
+            "SELECT ORDINAL_POSITION, COLUMN_NAME, COLUMN_TYPE, IS_NULLABLE, COLUMN_COMMENT "
+            "FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='%s' AND TABLE_NAME='%s'" % (
                 database_name, table[0]
             )
         )
